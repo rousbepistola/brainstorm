@@ -15,8 +15,8 @@
             </div>
             
             <div class="nav-links">
-                <a href="//github.io/jo_geek" target="_blank">Home</a>
-                <a href="http://stackoverflow.com/users/4084003/" target="_blank">Signup</a>
-                <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">Brainstorm</a>
+                <a href="./index.php"  >Home</a>
+                <a href="./signup.php"  >Signup</a>
+                <a href="./blive.php"  >B-Live!</a>
             </div>
-        </div>
+        </div> 

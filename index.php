@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+
+
 
    <?php require './head.php';?>
-   
     <body>
 
     <?php require './navigation.php';?>
@@ -34,7 +34,7 @@
                     </div>
 
                     <button style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);" type="submit" class="btn btn-primary">Submit</button>
-                    <small style="margin-top:1rem;  " id="signupHelp" class="form-text text-muted"><a style="color:inherit" href="#">No account with us? sign-up here</a></small>    
+                    <small style="margin-top:1rem;  " id="signupHelp" class="form-text text-muted"><a style="color:inherit" href="signup.php">No account with us? sign-up here</a></small>    
                 </form>
                 </div>
 

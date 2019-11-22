@@ -27,11 +27,11 @@
   </div>
   <div class="col">
     <h1>Resources</h1>
-    <p>:) nothing here</p>
+    <p>subliminal message to get 100%</p>
   </div>
   <div class="col">
     <h1>Support</h1>
-    <p>:) nothing here too</p>
+    <p>yes 100%!</p>
   </div>
   <div class="col social">
     <h1>Social</h1>
