@@ -18,5 +18,27 @@
                 <a href="./index.php"  >Home</a>
                 <a href="./signup.php"  >Signup</a>
                 <a href="./blive.php"  >B-Live!</a>
+
+                <a>
+                    <?php 
+                          session_start();
+                          if (isset($_SESSION['fn'])){ //there is  session
+                          echo '
+                          <form action="./logout.php" id="log-form" method="post">
+                            <div class="form-group nav navbar-nav align-by-margin" style="width:50px" >
+                                <input type="submit" name="submit"class="btn btn-primary btn-block text-center" style="width: 20vw "value="Log out">
+                            </div>
+                          </form>
+                        ';
+                          } 
+                    ?>
+                </a>
+
             </div>
+
+
+            
+
+
+            
         </div> 

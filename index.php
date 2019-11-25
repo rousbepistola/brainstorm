@@ -19,21 +19,21 @@
                 <div class="col-md-4"><img style="width:100%; height:auto"  src="./media/loginpicture.png" alt="Login Avatar"></div>
 
                 <div class="col-md-6" >
-                    <form action="#" method="post" style="text-align:center; margin: 3rem 1.5rem;">
+                    <form action="./loginvalidation.php" method="post" style="text-align:center; margin: 3rem 1.5rem;">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); box-shadow: 0px 5px 7px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);width:70%; text-align:center; margin:0 auto;" 
-                        type="email" class="form-control" id="exampleInputEmail1" name="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        type="email" class="form-control" id="exampleInputEmail1" name="logemail" aria-describedby="emailHelp" placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); box-shadow: 0px 5px 7px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);width:70%; text-align:center;margin:0 auto;"
-                         type="password" class="form-control" id="exampleInputPassword1" name="loginPassword" placeholder="Password">
+                         type="password" class="form-control" id="exampleInputPassword1" name="logpass" placeholder="Password">
                     </div>
 
-                    <button style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);" type="submit" class="btn btn-primary">Submit</button>
+                    <button name="submit" style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);" type="submit" class="btn btn-primary">Submit</button>
                     <small style="margin-top:1rem;  " id="signupHelp" class="form-text text-muted"><a style="color:inherit" href="signup.php">No account with us? sign-up here</a></small>    
                 </form>
                 </div>

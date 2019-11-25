@@ -21,7 +21,7 @@ if (isset($_POST["signup"])) {
              VALUES (null, '{$_SESSION["fn"]}', '{$_SESSION["un"]}', '{$_SESSION["em"]}', '{$_SESSION["pass"]}')";
        if ($conn->query($sqlInsert) === TRUE) {
        //
-       header("Location: ./signup.php?succefulInsertionOnDb");
+       header("Location: ./blive.php?succefulInsertionOnDb");
        echo "success Ya!!";
        } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
