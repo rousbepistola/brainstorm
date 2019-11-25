@@ -1,5 +1,8 @@
 
-   <?php require './head.php';?>
+ <?php    session_start();  ?>  
+ 
+ <?php require './head.php';?>
+
     <body>
     <?php require './navigation.php';?>
     
@@ -25,7 +28,7 @@
                 <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2" style=" margin:auto;">
                 
 
-            <form class="form-horizontal" method="post" action="/signupvalidation.php" style="text-align:justify; padding:auto;">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="./signupvalidation.php" style="text-align:justify; padding:auto;">
                 <br>
                 <fieldset>
                 <legend>Sign Up Yeah!</legend>			
@@ -70,7 +73,7 @@
 						</div>
 
 						<div class="form-group ">
-							<input type="button" type="submit" class="btn btn-info btn-lg btn-block login-button" value="Register"/>
+							<input type="submit" name="signup" class="btn btn-info btn-lg btn-block login-button" value="Register"/>
 						</div>
                     </fieldset>
                     <div style="height:10vh"></div>
