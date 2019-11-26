@@ -25,9 +25,7 @@
                           if (isset($_SESSION['fn'])){ //there is  session
                           echo '
                           <form action="./logout.php" id="log-form" method="post">
-                            <div class="form-group nav navbar-nav align-by-margin" style="width:50px" >
-                                <input type="submit" name="submit"class="btn btn-primary btn-block text-center" style="width: 20vw "value="Log out">
-                            </div>
+                                <input type="submit" name="submit "class="btn btn-primary text-center" style:"margin: auto; width:160px; padding: 0 auto;" value="Log out">
                           </form>
                         ';
                           } 
