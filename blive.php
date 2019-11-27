@@ -93,9 +93,9 @@ if (!isset($_SESSION["un"])){
 
             <!-- json and chat script -->
         <script>
-        var start = 0; url = 'http://triosdevelopers.com/~R.Epistola/brainstorm/chatprocessing.php';
+        var from = null, start = 0; url = 'http://triosdevelopers.com/~R.Epistola/brainstorm/chatprocessing.php';
 
-
+ 
 
         $(document).ready(function(){
             from = '<?php echo $_SESSION["un"]; ?>';
