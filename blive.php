@@ -45,6 +45,25 @@ if (!isset($_SESSION["em"])){
 
             <!-- chatBox -->
             <div class="col-md-10" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh;">
+                                                                                <!-- left for others -->
+
+
+
+
+
+
+
+
+                                                                                <!-- right for user -->
+
+
+
+
+
+
+
+
+
 
 
 

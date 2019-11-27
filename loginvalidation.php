@@ -20,7 +20,7 @@
                 $_SESSION["un"] = $row["username"];
                 $_SESSION["em"] = $row["email"];
                 $_SESSION["uid"] = $row["uid"];
-                $passFromDb = $row["pwd"];
+                $passFromDb = $row["password"];
             
             if (password_verify($pass, $passFromDb)){
                 header("Location: ./blive.php?succesfulLogin!");
