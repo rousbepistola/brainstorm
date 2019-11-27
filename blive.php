@@ -7,13 +7,6 @@ if (!isset($_SESSION["un"])){
     header("location: index.php?loginRequired");
 }
 
-
-
-
-
-
-
-
 ?>  
  
  <?php require './head.php';?>
@@ -64,7 +57,7 @@ if (!isset($_SESSION["un"])){
             <div class="col-md-12" style="height:10vh; margin: auto 0; border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png');height:10vh; padding:1em;">
                 <div class="chat-form">
                     <div class="container ">
-                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php" class="form-horizontal">
+                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php" class="form-horizontal">   <!-- action="./chatprocessing.php" -->
                             <div class="row" >
                             <div class="col-sm-10 col-xs-8">
                                 <input type="text" name="chat" class="form-control" id="message" placeholder="Message" />
@@ -94,7 +87,6 @@ if (!isset($_SESSION["un"])){
 
 
 
-
     <?php  require './footer.php' ?>
 
 
@@ -110,7 +102,7 @@ if (!isset($_SESSION["un"])){
             load();
 
             $('form').submit(function(e){
-                $.post(url, {
+                $.POST(url, {
                     message: $('#message').val(),
                     from: from
                     });
@@ -123,7 +115,7 @@ if (!isset($_SESSION["un"])){
         function load(){
             $.get(url + '?start=' + start, function(result){
                 if(result.items){
-                    result.items.foreach(item =>{
+                    result.items.foreach(item=>{
                         start = item.id;
                         $('#messages').append(renderMessage(item));
                     })

@@ -5,4 +5,4 @@
 //       $('nav').removeClass('shrink');
 //     }
 //   });
-var nav = responsiveNav(".nav-collapse");
+// var nav = responsiveNav(".nav-collapse");
