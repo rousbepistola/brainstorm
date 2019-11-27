@@ -23,7 +23,7 @@
                 $passFromDb = $row["password"];
             
             if (password_verify($pass, $passFromDb)){
-                header("Location: ./blive.php?succesfulLogin!");
+                header("Location: ./blive.php");
             }
             else {
                 $_SESSION["er"] = "Your password is wrong!";
