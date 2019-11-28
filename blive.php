@@ -7,6 +7,10 @@ if (!isset($_SESSION["un"])){
     header("location: index.php?loginRequired");
 }
 
+if(!isset($_SESSION['time'])){
+    $_SESSION['time'] = date('Y-m-d h:i:s', time());
+};
+
 ?>  
  
  <?php require './head.php';?>
@@ -39,17 +43,50 @@ if (!isset($_SESSION["un"])){
             <div class="col-md-12" id="messages" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh; padding:2em">
                                                                                 
 
+<?php
+
+        $sqlDetails = "SELECT * FROM `chat` WHERE `created` >= {$_SESSION['time']} ORDER BY `created`";
+            
+            if ($resultDetails = $conn->query($sqlDetails)) {
+                while ($row = $resultDetails->fetch_assoc()) {
+                    $_SESSION['chatName'] = $row['username'];
+                    $_SESSION['chatMessage'] = $row['messages'];
+                    $_SESSION['chatTime'] = $row['created'];
+                    $_SESSION['chatId'] = $row['cid'];
+                }
+            }
+
+
+          echo  '<table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Message</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </table>'
 
 
 
 
 
 
-
-
-
-
-
+?>
             </div>
 
 
@@ -57,7 +94,7 @@ if (!isset($_SESSION["un"])){
             <div class="col-md-12" style="height:10vh; margin: auto 0; border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png');height:10vh; padding:1em;">
                 <div class="chat-form">
                     <div class="container ">
-                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php" class="form-horizontal">   <!-- action="./chatprocessing.php" -->
+                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php"  class="form-horizontal">   <!-- action="./chatprocessing.php" -->
                             <div class="row" >
                             <div class="col-sm-10 col-xs-8">
                                 <input type="text" name="chat" class="form-control" id="message" placeholder="Message" />
@@ -87,47 +124,56 @@ if (!isset($_SESSION["un"])){
 
 
 
-    <?php  require './footer.php' ?>
+    <?php  
+    require './footer.php';
+
+    ?>
 
 
 
             <!-- json and chat script -->
         <script>
-        var from = null, start = 0; url = 'http://triosdevelopers.com/~R.Epistola/brainstorm/chatprocessing.php';
+            $("input:text:visible:first").focus();
+
+        // var from = null, start = 0; url = 'http://triosdevelopers.com/~R.Epistola/brainstorm/chatprocessing.php';
 
  
 
-        $(document).ready(function(){
-            from = '<?php echo $_SESSION["un"]; ?>';
-            load();
+        // $(document).ready(function(){
+        //     from = '';
+        // <?php // echo $_SESSION["un"]; ?>
+        //     load();
 
-            $('form').submit(function(e){
-                $.POST(url, {
-                    message: $('#message').val(),
-                    from: from
-                    });
-                    $('#message').val('')
+        //     $('form').submit(function(e){
+        //         $.post(url, {
+        //             message: $('#message').val(),
+        //             from: from
+        //             });
+        //             $('#message').val('')
+        //             return false;
+        //             console.log("Here0");
+        //     })
+        // });
 
-                return false;
-            })
-        });
-
-        function load(){
-            $.get(url + '?start=' + start, function(result){
-                if(result.items){
-                    result.items.foreach(item=>{
-                        start = item.id;
-                        $('#messages').append(renderMessage(item));
-                    })
-                };
-                load();
-            });
-        }
+        // function load(){
+        //     $.get(url + '?start=' + start, function(result){
+        //         if(result.items){
+        //             result.items.foreach(item =>{
+        //                 console.log("Here1");
+        //                 start = item.id;
+        //                 $('#messages').append(renderMessage(item));
+        //             })
+        //         };
+        //         console.log("Here3");
+        //         load();
+        //     });
+        // }
 
 
-        function renderMessage(item){
-            console.log(item)
-        }
+        // function renderMessage(item){
+        //     console.log("Here4");
+        //     console.log(item);
+        // }
         
         
         </script>
