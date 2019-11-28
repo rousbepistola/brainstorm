@@ -37,7 +37,7 @@ if(!isset($_SESSION['time'])){
 
         </div>
 
-        <div class="row" style="height:80vh;">
+        <div class="row" style="height:50vh;">
 
             <!-- chatBox -->
             <div class="col-md-12" id="messages" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh; padding:2em">
@@ -49,10 +49,16 @@ if(!isset($_SESSION['time'])){
             
             if ($resultDetails = $conn->query($sqlDetails)) {
                 while ($row = $resultDetails->fetch_assoc()) {
-                    $_SESSION['chatName'] = $row['username'];
-                    $_SESSION['chatMessage'] = $row['messages'];
-                    $_SESSION['chatTime'] = $row['created'];
-                    $_SESSION['chatId'] = $row['cid'];
+                    $chatName = $row['username'];
+                    $chatMessage = $row['messages'];
+                    $chatTime = $row['created'];
+                    $chatId = $row['cid'];
+
+                    $sample .= '<tr>
+                    <th scope="row">'.$chatName.'</th>
+                    <td>'.$chatMessage.'</td>
+                    <td>'.$chatTime.'</td>
+                    </tr>';
                 }
             }
 
@@ -66,25 +72,9 @@ if(!isset($_SESSION['time'])){
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
+          '.$sample.'
           </tbody>
         </table>'
-
-
-
-
-
 
 ?>
             </div>
@@ -107,6 +97,8 @@ if(!isset($_SESSION['time'])){
                     </div>
                 </div>
             </div>
+
+            
             
         </div>
 
