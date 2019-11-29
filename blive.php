@@ -8,14 +8,17 @@ if (!isset($_SESSION["un"])){
 }
 
 if(!isset($_SESSION['time'])){
-    $_SESSION['time'] = date('Y-m-d h:i:s', time());
+    // $_SESSION['time'] = date('Y-m-d H:i:s', time());
+
+
+    $_SESSION['time'] = (new DateTime('America/New_York'))->format('Y-m-d H:i:s');
 };
 
 ?>  
  
  <?php require './head.php';?>
 
-    <body>
+    <body >
     <?php require './navigation.php';?>
 
 
@@ -37,33 +40,16 @@ if(!isset($_SESSION['time'])){
 
         </div>
 
-        <div class="row" style="height:50vh;">
+        <div  class="row" style="height:80vh;">
 
             <!-- chatBox -->
-            <div class="col-md-12" id="messages" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh; padding:2em">
-                                                                                
+            <div  class="col-md-12" id="messages" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh; padding:2em">
 
-<?php
+             <?php require './chatboxmessages.php';?>
 
-        $sqlDetails = "SELECT * FROM `chat` WHERE `created` >= {$_SESSION['time']} ORDER BY `created`";
-            
-            if ($resultDetails = $conn->query($sqlDetails)) {
-                while ($row = $resultDetails->fetch_assoc()) {
-                    $chatName = $row['username'];
-                    $chatMessage = $row['messages'];
-                    $chatTime = $row['created'];
-                    $chatId = $row['cid'];
+        
 
-                    $sample .= '<tr>
-                    <th scope="row">'.$chatName.'</th>
-                    <td>'.$chatMessage.'</td>
-                    <td>'.$chatTime.'</td>
-                    </tr>';
-                }
-            }
-
-
-          echo  '<table class="table">
+         <table class="table">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Name</th>
@@ -71,23 +57,26 @@ if(!isset($_SESSION['time'])){
               <th scope="col">Time</th>
             </tr>
           </thead>
-          <tbody>
-          '.$sample.'
+          <tbody >
+        <?php  echo "$sample"; ?>
           </tbody>
-        </table>'
+        </table>
+        
 
-?>
+
             </div>
+
+        </div>
 
 
             <!-- Input Box -->
             <div class="col-md-12" style="height:10vh; margin: auto 0; border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png');height:10vh; padding:1em;">
                 <div class="chat-form">
                     <div class="container ">
-                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php"  class="form-horizontal">   <!-- action="./chatprocessing.php" -->
+                        <form method="post" enctype="multipart/form-data" action="./chatprocessing.php" autocomplete="off"  class="form-horizontal">   <!-- action="./chatprocessing.php" -->
                             <div class="row" >
                             <div class="col-sm-10 col-xs-8">
-                                <input type="text" name="chat" class="form-control" id="message" placeholder="Message" />
+                                <input type="text" name="chat" class="form-control" id="message" placeholder="Message"  />
                             </div>
                             <div class="col-sm-2 col-xs-4">
                                 <input name="send" type="submit" class="btn btn-success btn-block" value="Send">
@@ -125,48 +114,50 @@ if(!isset($_SESSION['time'])){
 
             <!-- json and chat script -->
         <script>
-            $("input:text:visible:first").focus();
+          
 
-        // var from = null, start = 0; url = 'http://triosdevelopers.com/~R.Epistola/brainstorm/chatprocessing.php';
-
- 
-
-        // $(document).ready(function(){
-        //     from = '';
-        // <?php // echo $_SESSION["un"]; ?>
-        //     load();
-
-        //     $('form').submit(function(e){
-        //         $.post(url, {
-        //             message: $('#message').val(),
-        //             from: from
-        //             });
-        //             $('#message').val('')
-        //             return false;
-        //             console.log("Here0");
-        //     })
+        // $(document).ready(function() {
+        //     $("#responsecontainer").load("chatboxmessages.php");
+        // var refreshId = setInterval(function() {
+        //     $("#responsecontainer").load('chatboxmessages.php');
+        // }, 9000);
+        // $.ajaxSetup({ cache: false });
         // });
 
-        // function load(){
-        //     $.get(url + '?start=' + start, function(result){
-        //         if(result.items){
-        //             result.items.foreach(item =>{
-        //                 console.log("Here1");
-        //                 start = item.id;
-        //                 $('#messages').append(renderMessage(item));
-        //             })
-        //         };
-        //         console.log("Here3");
-        //         load();
-        //     });
-        // }
 
 
-        // function renderMessage(item){
-        //     console.log("Here4");
-        //     console.log(item);
-        // }
-        
+
+
+        // var cacheData;
+        // var data = $('#responsecontainer').html();
+        // var auto_refresh = setInterval(
+        // function ()
+        // {
+        //     $.ajax({
+        //         url: 'blive.php',
+        //         type: 'POST',
+        //         data: data,
+        //         dataType: 'html',
+        //         success: function(data) {
+        //             if (data !== cacheData){
+        //                 //data has changed (or it's the first call), save new cache data and update div
+        //                 cacheData = data;
+        //                 $('#responsecontainer').fadeOut("fast").html(data).fadeIn("fast");
+        //             }           
+        //         }
+        //     })
+        // }, 3000); // check every 30000 milliseconds
+
+
+
+
+
+            $("input:text:visible:first").focus();
+
+            var $chatt = $("#messages");
+            $chatt.scrollTop($chatt.height());
+
+
         
         </script>
 

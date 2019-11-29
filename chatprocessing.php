@@ -8,8 +8,10 @@ if(isset($_POST['send'])){
 
 // echo "works til here2";
 
+        // if(!isset($_SESSION["chatm"])){
+            $_SESSION["chatm"] = $_POST["chat"];
+        // } 
 
-$_SESSION["chatm"] = $_POST["chat"];
 
 $result = array();
 $message = isset($_SESSION["chatm"]) ? $_SESSION['chatm'] : null;
@@ -22,9 +24,9 @@ $from = $_SESSION['un'];
 
     $sql = "INSERT INTO chat(messages, username) VALUES ('$message','{$_SESSION["un"]}')";
 
-    if (($result['send_status'] = $conn->query($sql)) === TRUE) {
+    if (($result = $conn->query($sql)) === TRUE) {
         //
-        // header("Location: ./blive.php?succefulInsertionOnDbchat");
+        header("Location: ./blive.php?succesfulInsertionOnDb");
         
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -45,7 +47,7 @@ $from = $_SESSION['un'];
         // header('Access-Control-Allow-Origin: *');
         // header('Content-Type: application/json');
         // echo json_encode($result);
-        header("Location: ./blive.php?succesfulInsertionOnDb");
+        // header("Location: ./blive.php?succesfulInsertionOnDb");
         // header("Location: ./blive.php");
 
 
