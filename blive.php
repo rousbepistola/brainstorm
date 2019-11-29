@@ -25,7 +25,7 @@ if(!isset($_SESSION['time'])){
 
 
     <div class="container" style="height:auto; ">
-        <div class="row" style="height:auto; border-bottom:solid 3px salmon; ">
+        <div class="row" style="height:auto; ">
             
                 <img class="col-md-3" style="width:120px; border-radius:50%; margin:50px auto;" 
                 src="./media/signupimage4.png" alt="chat avatar">
@@ -35,12 +35,13 @@ if(!isset($_SESSION['time'])){
                     <p class="col-md-12"> <strong >Username: </strong><?php  echo $_SESSION['un']   ?> </p>
                     <p class="col-md-12"> <strong >Email: </strong><?php  echo $_SESSION['em']   ?> </p>
 
-                    <p class="col-md-12"> <strong >message: </strong><?php  echo $_SESSION["chatm"]   ?> </p>
+                    <p class="col-md-12"> <strong >Leaderboard Ranking: </strong><?php  echo '<small style="color:red;"><strong >coming soon</strong></small>'   ?> </p>
+                    <p class="col-md-12"> <strong >Questions Answered: </strong><?php  echo '<small style="color:red;"><strong >coming soon</strong></small>'   ?> </p>
                 </div>
 
         </div>
 
-        <div  class="row" style="height:80vh;">
+        <div  class="row" style="height:70vh;">
 
             <!-- chatBox -->
             <div  class="col-md-12" id="messages" style="border: 11px groove #2EA44E;border-radius: 21px; background:url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png'); overflow:scroll; height:70vh; padding:2em">
@@ -49,15 +50,22 @@ if(!isset($_SESSION['time'])){
 
         
 
-         <table class="table">
-          <thead class="thead-dark">
+         <table id="getdata" class="table" cellspacing="10">
+         <thead class="thead-dark" style="text-align:center;">
+            <tr>
+            <th scope="col"></th>
+              <th scope="col">Brainstorm live! chat community</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <thead class="thead-dark" style="text-align:center;">
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Message</th>
               <th scope="col">Time</th>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
         <?php  echo "$sample"; ?>
           </tbody>
         </table>
@@ -112,54 +120,7 @@ if(!isset($_SESSION['time'])){
 
 
 
-            <!-- json and chat script -->
-        <script>
-          
-
-        // $(document).ready(function() {
-        //     $("#responsecontainer").load("chatboxmessages.php");
-        // var refreshId = setInterval(function() {
-        //     $("#responsecontainer").load('chatboxmessages.php');
-        // }, 9000);
-        // $.ajaxSetup({ cache: false });
-        // });
-
-
-
-
-
-        // var cacheData;
-        // var data = $('#responsecontainer').html();
-        // var auto_refresh = setInterval(
-        // function ()
-        // {
-        //     $.ajax({
-        //         url: 'blive.php',
-        //         type: 'POST',
-        //         data: data,
-        //         dataType: 'html',
-        //         success: function(data) {
-        //             if (data !== cacheData){
-        //                 //data has changed (or it's the first call), save new cache data and update div
-        //                 cacheData = data;
-        //                 $('#responsecontainer').fadeOut("fast").html(data).fadeIn("fast");
-        //             }           
-        //         }
-        //     })
-        // }, 3000); // check every 30000 milliseconds
-
-
-
-
-
-            $("input:text:visible:first").focus();
-
-            var $chatt = $("#messages");
-            $chatt.scrollTop($chatt.height());
-
-
-        
-        </script>
+         
 
 
 
@@ -167,6 +128,42 @@ if(!isset($_SESSION['time'])){
         <script>AOS.init();</script>
         <script src="./main.js" async defer></script>
 
+
+           <!-- json and chat script -->
+           <script>
+          
+
+
+
+          $("input:text:visible:first").focus();
+
+          var $chatt = $("#messages");
+          $chatt.scrollTop(20000);
+
+
+      // autorefresh
+
+    //   function dis(){
+    //       xmlhttp = new XMLHttpRequest();
+    //       xmlhttp.open("GET", "./chatboxmessages.php", false);
+    //       xmlhttp.send(null);
+    //       document.getElementById("getdata").innerHTML=xmlhttp.responseText;
+    //   }
+
+    function dis(){
+          $("#getdata").load(window.location.href + " #getdata" );
+      }
+
+
+    
+    //   dis();
+    
+      setInterval(function(){
+          dis();
+      }, 2000)
+
+
+      </script>
 
 
 

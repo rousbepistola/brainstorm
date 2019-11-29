@@ -59,11 +59,19 @@ if (isset( $_SESSION["chatm"])){
                     $chatId = $row['cid'];
 
                 
-                    $sample .= '<tr>
-                    <th scope="row">'.$chatName.'</th>
-                    <td>'.$chatMessage.'</td>
-                    <td>'.$chatTime.'</td>
-                    </tr>';
+                    if ($chatName == $_SESSION["un"]){
+                        $sample .= '<tr class="getdata" style="background:lightgreen; text-align:center; ">
+                        <th scope="row">'.$chatName.'</th>
+                        <td>'.$chatMessage.'</td>
+                        <td><i><small>'.$chatTime.'</i></small></td>
+                        </tr>';
+                    } else {
+                        $sample .= '<tr class="getdata" style="background:lightblue; text-align:center; border-radius:50">
+                        <th scope="row">'.$chatName.'</th>
+                        <td>'.$chatMessage.'</td>
+                        <td><small><i>'.$chatTime.'</i></small></td>
+                        </tr>';
+                    }
                 }
             }
             else {

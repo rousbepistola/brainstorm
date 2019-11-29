@@ -26,7 +26,7 @@ $from = $_SESSION['un'];
 
     if (($result = $conn->query($sql)) === TRUE) {
         //
-        header("Location: ./blive.php?succesfulInsertionOnDb");
+        header("Location: ./blive.php");
         
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
